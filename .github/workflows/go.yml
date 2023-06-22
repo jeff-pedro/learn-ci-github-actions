@@ -5,9 +5,9 @@ name: Go
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "02-criando_rotinas" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "02-criando_rotinas" ]
 
 jobs:
 
