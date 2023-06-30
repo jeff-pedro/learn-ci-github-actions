@@ -5,9 +5,9 @@ name: Go
 
 on:
   push:
-    branches: ['03-utilizando_estrategias']
+    branches: ['*']
   pull_request:
-    branches: ['03-utilizando_estrategias']
+    branches: ['*']
 
 jobs:
   test:
@@ -15,7 +15,7 @@ jobs:
     strategy:
       matrix:
         go_version: ['1.18', '1.17', '>=1.18']
-        os: ['ubuntu-latest', 'windows-latest']
+        os: ['ubuntu-latest']
     steps:
       - uses: actions/checkout@v3
 
@@ -24,10 +24,10 @@ jobs:
         with:
           go-version: ${{ matrix.go_version }}
 
-      - name: Build-database
+      - name: Build Database
         run: docker-compose build
 
-      - name: Create-database
+      - name: Create Database
         run: docker-compose up -d
 
       - name: Test
