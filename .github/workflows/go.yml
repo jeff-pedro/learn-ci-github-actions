@@ -26,3 +26,6 @@ jobs:
 
     - name: Test
       run: go test -v ./...
+
+  docker:
+    uses: ./.github/workflows/Docker.yml
