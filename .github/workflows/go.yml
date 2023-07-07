@@ -5,17 +5,61 @@ name: Go
 
 on:
   push:
+<<<<<<< HEAD
     branches: [ "02-criando_rotinas" ]
   pull_request:
     branches: [ "02-criando_rotinas" ]
+=======
+    branches: ['*']
+  pull_request:
+    branches: ['*']
+>>>>>>> 05-montando_container
 
 jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    env:
+      HOST: localhost
+      DBPORT: 5432
+      USER: root
+      PASSWORD: root
+      DBNAME: root
+    strategy:
+      matrix:
+        go_version: ['1.18', '1.17', '>=1.18']
+        os: ['ubuntu-latest', 'ubuntu-20.04']
+    steps:
+      - uses: actions/checkout@v3
 
+      - name: Set up Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: ${{ matrix.go_version }}
+
+      - name: Build Database
+        run: docker-compose build
+
+      - name: Create Database
+        run: docker-compose up -d
+
+      - name: Test
+        run: go test -v main_test.go
+
+<<<<<<< HEAD
   test:
     runs-on: ubuntu-latest
+=======
+  build:
+    needs: test
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: ['ubuntu-latest', 'ubuntu-20.04']
+>>>>>>> 05-montando_container
     steps:
-    - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
+<<<<<<< HEAD
     - name: Set up Go
       uses: actions/setup-go@v3
       with:
@@ -38,3 +82,7 @@ jobs:
     
     - name: Build
       run: go build -v main.go
+=======
+      - name: Build
+        run: go build -v main.go
+>>>>>>> 05-montando_container
