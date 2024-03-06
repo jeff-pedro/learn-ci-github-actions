@@ -11,7 +11,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     env:
       HOST: localhost
-      PORT: 5432
+      DBPORT: 5432
       USER: root
       PASSWORD: root
       DBNAME: root
@@ -27,10 +27,10 @@ jobs:
         with:
           go-version: ${{ matrix.go_version }}
 
-      - name: Build-DB
+      - name: Build database
         run: docker-compose build
 
-      - name: Create-DB
+      - name: Create database
         run: docker-compose up -d
 
       - name: Test
