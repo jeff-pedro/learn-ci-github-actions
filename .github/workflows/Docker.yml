@@ -10,11 +10,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Docker Login
-        uses: docker/login-action@v2.0.0
-        with:
-          username: jeffersonps
-          password: ${{ secrets.PASSWORD_DOCKER_HUB }}
-
       - run: | 
-          echo ${{ env.USERNAME_DOCKER_HUB }}
+          echo "Usuário: ${{ vars.USERNAME_DOCKER_HUB }}"
+
+      - name: Docker Login
+        uses: docker/login-action@v3.0.0
+        with:
+          username: ${{ vars.USERNAME_DOCKER_HUB }}
+          password: ${{ secrets.PASSWORD_DOCKER_HUB }}
