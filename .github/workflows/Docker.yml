@@ -14,7 +14,7 @@ jobs:
         uses: docker/login-action@v2.0.0
         with:
             username: jeffersonps
-            password: ${{ secrets.PASSWORD_DOCKER_HUB }}
+            password: ${{secrets.PASSWORD_DOCKER_HUB}}
 
       - run: | 
-          echo ${{  env.USERNAME_DOCKER_HUB }}
+          echo ${{env.USERNAME_DOCKER_HUB}}
