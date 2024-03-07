@@ -16,5 +16,5 @@ jobs:
           username: jeffersonps
           password: ${{ secrets.PASSWORD_DOCKER_HUB }}
 
-      # - run: | 
-      #     echo ${{ env.USERNAME_DOCKER_HUB }}
+      - run: | 
+          echo ${{ env.USERNAME_DOCKER_HUB }}
