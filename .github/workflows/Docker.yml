@@ -10,12 +10,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - run: | 
-          echo "Usuário: ${{ vars.USERNAME_DOCKER_HUB }}"
-          echo "Senha: ${{ secrets.DOCKER_PASSWORD }}"
-
       - name: Docker Login
         uses: docker/login-action@v3.0.0
         with:
           username: ${{ vars.USERNAME_DOCKER_HUB }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
+          password: ${{ secrets.PASSWORD_DOCKER_HUB }}
